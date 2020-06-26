@@ -84,6 +84,15 @@ async def test_scan_random_mal_not():
 
 {%- endif -%}
 
+@pytest.mark.asyncio
+async def test_setup_teardown_multiple_times():
+    scanner = Scanner()
+    await scanner.setup()
+    await scanner.setup()
+    await scanner.teardown()
+    await scanner.teardown()
+    await scanner.setup()
+
 {%- endif -%}
 
 {% if cookiecutter.participant_type == "ambassador" %}
